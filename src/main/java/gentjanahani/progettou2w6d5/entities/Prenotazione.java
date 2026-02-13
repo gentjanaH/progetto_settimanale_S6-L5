@@ -8,8 +8,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name="prenotazioni")
-public class Prenotazioni {
+@Table(name="prenotazione")
+public class Prenotazione {
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)

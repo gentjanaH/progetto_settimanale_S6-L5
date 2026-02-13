@@ -12,7 +12,7 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Entity
-@Table(name="dipendente")
+@Table(name = "dipendente")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,6 +25,7 @@ public class Dipendente {
     private String name;
     private String surname;
     private String email;
+    private String avatar;
 
     public Dipendente(String username, String name, String surname, String email) {
         this.username = username;

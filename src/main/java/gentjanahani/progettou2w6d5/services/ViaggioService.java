@@ -22,24 +22,24 @@ public class ViaggioService {
         this.viaggioRepository = viaggioRepository;
     }
 
-    public Viaggio save(ViaggioDTO payload){
+    public Viaggio save(ViaggioDTO payload) {
 
-        Viaggio newViaggio=new Viaggio(payload.destination(), payload.travelDate());
-        Viaggio savedViaggio=this.viaggioRepository.save(newViaggio);
+        Viaggio newViaggio = new Viaggio(payload.destination(), payload.travelDate());
+        Viaggio savedViaggio = this.viaggioRepository.save(newViaggio);
         log.info("IL viaggio è stato salvato correttamente con id {}", savedViaggio.getIdViaggio());
         return savedViaggio;
     }
 
-    public Viaggio findViaggioById(UUID idViaggio){
-        Viaggio viaggio=viaggioRepository.findByIdViaggio(idViaggio);
-        if(viaggio == null) throw new NotFoundException(idViaggio);
+    public Viaggio findViaggioById(UUID idViaggio) {
+        Viaggio viaggio = viaggioRepository.findByIdViaggio(idViaggio);
+        if (viaggio == null) throw new NotFoundException(idViaggio);
         return viaggio;
     }
 
     public Viaggio findAndUpdateStato(UUID idViaggio, ViaggioStatusDTO payload) {
-        Viaggio viaggio=viaggioRepository.findByIdViaggio(idViaggio);
-        if(viaggio == null) throw new NotFoundException(idViaggio);
-        viaggio.setCompleted(payload.completed());
+        Viaggio viaggio = viaggioRepository.findByIdViaggio(idViaggio);
+        if (viaggio == null) throw new NotFoundException(idViaggio);
+        viaggio.setStato(payload.stato());
         return viaggioRepository.save(viaggio);
     }
 }

@@ -1,5 +1,7 @@
 package gentjanahani.progettou2w6d5.services;
 
+import gentjanahani.progettou2w6d5.entities.Prenotazione;
+import gentjanahani.progettou2w6d5.payloads.PrenotazioneDTO;
 import gentjanahani.progettou2w6d5.repository.PrenotazioneRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,5 +18,8 @@ public class PrenotazioneService {
         this.prenotazioneRepository = prenotazioneRepository;
     }
 
+    public Prenotazione save(PrenotazioneDTO payload) {
+        
+    }
 
 }

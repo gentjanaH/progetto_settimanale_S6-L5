@@ -10,22 +10,25 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name="viaggio")
+@Table(name = "viaggio")
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 public class Viaggio {
-    @Id@GeneratedValue
+    @Id
+    @GeneratedValue
     @Setter(AccessLevel.NONE)
     private UUID idViaggio;
     private String destination;
     private LocalDate travelDate;
-    private boolean completed;
+    private String stato;
+
 
     public Viaggio(String destination, LocalDate travelDate) {
         this.destination = destination;
         this.travelDate = travelDate;
-        this.completed =false;
+        this.stato = "In programma";
+
     }
 }

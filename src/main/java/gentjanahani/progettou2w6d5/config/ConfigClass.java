@@ -16,7 +16,7 @@ public class ConfigClass {
                                      @Value("${cloudinary.apikey}") String apiKey,
                                      @Value("${cloudinary.secret}") String apiSecret) {
 
-        //FATTO RPIMA SYSTEMOUT
+        //FATTO PRIMA SYSTEMOUT
 
         Map<String, String> configuration = new HashMap<>();
         configuration.put("cloud_name", cloudName);

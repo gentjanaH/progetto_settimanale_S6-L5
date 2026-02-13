@@ -1,12 +1,16 @@
 package gentjanahani.progettou2w6d5.services;
 
 import gentjanahani.progettou2w6d5.entities.Dipendente;
+import gentjanahani.progettou2w6d5.entities.Viaggio;
 import gentjanahani.progettou2w6d5.exceptions.BadRequestException;
+import gentjanahani.progettou2w6d5.exceptions.NotFoundException;
 import gentjanahani.progettou2w6d5.payloads.DipendenteDTO;
 import gentjanahani.progettou2w6d5.repository.DipendenteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -36,5 +40,11 @@ public class DipendenteService {
         log.info("Il dipendente con id {} è stato salvato correttamente.", payload.surname());
 
         return savedDip;
+    }
+
+    public Dipendente findDipendenteById(UUID idDipendente) {
+        Dipendente dipendente = dipendenteRepository.findByIdDipendente(idDipendente);
+        if (dipendente == null) throw new NotFoundException(idDipendente);
+        return dipendente;
     }
 }

@@ -15,7 +15,7 @@ public record PrenotazioneDTO(
         @FutureOrPresent(message = "La data del viaggio deve essere nel futuro")
         LocalDate dataRichiesta,
         @NotBlank(message = "Le note sono un campo obbligatorio")
-        @Size(min = 2, max = 30, message = "Il campo note può contenere tra i 2 e i 100 caratteri")
+        @Size(min = 2, max = 100, message = "Il campo note può contenere tra i 2 e i 100 caratteri")
         String note,
         @NotNull(message = "l'id del viaggio è obbligatorio")
         UUID idViaggio,

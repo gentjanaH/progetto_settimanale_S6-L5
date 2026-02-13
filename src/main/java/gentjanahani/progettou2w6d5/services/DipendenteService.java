@@ -1,5 +1,7 @@
 package gentjanahani.progettou2w6d5.services;
 
+import gentjanahani.progettou2w6d5.entities.Dipendente;
+import gentjanahani.progettou2w6d5.payloads.DipendenteDTO;
 import gentjanahani.progettou2w6d5.repository.DipendenteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,5 +16,9 @@ public class DipendenteService {
     @Autowired
     public DipendenteService(DipendenteRepository dipendenteRepository) {
         this.dipendenteRepository = dipendenteRepository;
+    }
+
+    public Dipendente(DipendenteDTO payload) {
+        
     }
 }

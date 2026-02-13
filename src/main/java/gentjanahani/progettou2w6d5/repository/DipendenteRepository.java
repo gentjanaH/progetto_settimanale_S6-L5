@@ -12,5 +12,7 @@ public interface DipendenteRepository extends JpaRepository<Dipendente, UUID> {
 
     Optional<Dipendente> findByEmail(String email);
 
+    Optional<Dipendente> findByUsername(String username);
+
     Dipendente findByIdDipendente(UUID iaDipendente);
 }

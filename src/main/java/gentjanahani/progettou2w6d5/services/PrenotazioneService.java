@@ -16,5 +16,5 @@ public class PrenotazioneService {
         this.prenotazioneRepository = prenotazioneRepository;
     }
 
-    
+
 }

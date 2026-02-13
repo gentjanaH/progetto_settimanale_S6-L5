@@ -43,10 +43,9 @@ public class DipendenteController {
 
     // 2. PATCH http://localhost:3025/dipendenti/{idDipendente}
     @PatchMapping("/{idDipendente}/avatar")
-    public String uploadImage(@PathVariable UUID idDipendente, @RequestParam("user_picture") MultipartFile file) {
-        String url = this.dipendenteService.uploadAvatar(idDipendente, file);
+    public Dipendente uploadImage(@PathVariable UUID idDipendente, @RequestParam("user_picture") MultipartFile file) {
+        return this.dipendenteService.uploadAvatar(idDipendente, file);
 
-        return url;
 
     }
 }

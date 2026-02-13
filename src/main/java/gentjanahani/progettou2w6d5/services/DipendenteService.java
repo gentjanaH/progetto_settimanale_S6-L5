@@ -54,7 +54,7 @@ public class DipendenteService {
         return dipendente;
     }
 
-    public String uploadAvatar(UUID idDipendente, MultipartFile file) {
+    public Dipendente uploadAvatar(UUID idDipendente, MultipartFile file) {
         if (file.isEmpty()) throw new BadRequestException("Il file è vuoto");
         if (file.getSize() > 3_000_000) throw new BadRequestException("Il file è troppo grande");
 
@@ -72,7 +72,7 @@ public class DipendenteService {
             dipendenteRepository.save(dip);
 
 
-            return imgUrl;
+            return dip;
 
 
         } catch (IOException e) {

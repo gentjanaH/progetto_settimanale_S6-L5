@@ -1,9 +1,6 @@
 package gentjanahani.progettou2w6d5.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Setter;
 
@@ -21,6 +18,12 @@ public class Prenotazioni {
     private String note;
 
     //relazione ManyToOne con viaggio
+    @ManyToOne
+    @JoinColumn(name="idViaggio")
+    private Viaggio viaggio;
 
     //relazione ManyToOne con dipendente
+    @ManyToOne
+    @JoinColumn(name="idUtente")
+    private Dipendente dipendente;
 }

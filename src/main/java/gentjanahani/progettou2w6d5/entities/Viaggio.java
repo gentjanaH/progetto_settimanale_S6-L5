@@ -20,12 +20,12 @@ public class Viaggio {
     @Setter(AccessLevel.NONE)
     private UUID idViaggio;
     private String destination;
-    private LocalDate date;
+    private LocalDate travelDate;
     private boolean completed;
 
-    public Viaggio(String destination, LocalDate date) {
+    public Viaggio(String destination, LocalDate travelDate) {
         this.destination = destination;
-        this.date = date;
+        this.travelDate = travelDate;
         this.completed =false;
     }
 }

@@ -54,20 +54,26 @@ public class DipendenteService {
         return dipendente;
     }
 
-    public String uploadAvatar(MultipartFile file) {
+    public String uploadAvatar(UUID idDipendente, MultipartFile file) {
         if (file.isEmpty()) throw new BadRequestException("Il file è vuoto");
-        if (file.getSize() > 2_000_000) throw new BadRequestException("Il file è troppo grande");
+        if (file.getSize() > 3_000_000) throw new BadRequestException("Il file è troppo grande");
 
         String contentType = file.getContentType();
         if (contentType == null || !(contentType.equals("image/jpeg") || contentType.equals("image/png") || contentType.equals("image/gif"))) {
             throw new BadRequestException("Sono ammessi solo file JPG, PNG, o GIF");
         }
-        
+
         try {
             Map result = cloudinaryUploader.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
             String imgUrl = (String) result.get("secure_url");
 
+            Dipendente dip = dipendenteRepository.findByIdDipendente(idDipendente);
+            dip.setAvatar(imgUrl);
+            dipendenteRepository.save(dip);
+
+
             return imgUrl;
+
 
         } catch (IOException e) {
             throw new RuntimeException(e);

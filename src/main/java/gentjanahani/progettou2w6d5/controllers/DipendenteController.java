@@ -4,7 +4,6 @@ import gentjanahani.progettou2w6d5.entities.Dipendente;
 import gentjanahani.progettou2w6d5.exceptions.ValidationException;
 import gentjanahani.progettou2w6d5.payloads.DipendenteDTO;
 import gentjanahani.progettou2w6d5.services.DipendenteService;
-import org.hibernate.validator.constraints.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/dipendenti")
@@ -43,9 +43,10 @@ public class DipendenteController {
 
     // 2. PATCH http://localhost:3025/dipendenti/{idDipendente}
     @PatchMapping("/{idDipendente}/avatar")
-    public String uploadImage(@RequestParam("user_picture") MultipartFile file, @PathVariable UUID idDipendente) {
+    public String uploadImage(@PathVariable UUID idDipendente, @RequestParam("user_picture") MultipartFile file) {
+        String url = this.dipendenteService.uploadAvatar(idDipendente, file);
 
-        String url = this.dipendenteService.uploadAvatar(file);
         return url;
+
     }
 }
